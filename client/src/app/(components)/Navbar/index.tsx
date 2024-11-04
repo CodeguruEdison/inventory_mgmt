@@ -2,15 +2,22 @@
 import React from 'react'
 import { Bell, Menu, Settings, Sun } from 'lucide-react'
 import Link from 'next/link'
+import { useAppDispatch, useAppSelector } from '@/app/redux'
+import { setIsSideBarCollapsed } from '@/state'
 
-type Props = {}
 
-const Index = (props: Props) => {
+
+const Navbar = () => {
+    const dispatch = useAppDispatch()
+    const isSidebarCollapsed = useAppSelector((state) => state.global.isSidebarCollapsed);
+    const toggleSidebar = () => {
+        dispatch(setIsSideBarCollapsed(!isSidebarCollapsed));
+    }
     return (
         <div className='flex justify-between items-center w-full mb-7'>
             {/* LEFT SIDE*/}
             <div className='flex justify-between items-center gap-5'>
-                <button className='px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100' onClick={() => { }}>
+                <button className='px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100' onClick={toggleSidebar}>
                     <Menu className="w-4 h-4" />
                 </button>
 
@@ -55,4 +62,4 @@ const Index = (props: Props) => {
 
     )
 }
-export default Index
+export default Navbar
