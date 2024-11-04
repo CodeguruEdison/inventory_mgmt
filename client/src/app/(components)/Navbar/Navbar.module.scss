@@ -1,0 +1,11 @@
+.container {
+    @apply flex justify-between items-center w-full mb-7;
+  }
+  
+  .left-side {
+    @apply flex justify-between items-center gap-5;
+  
+    &__button {
+      @apply px-3 py-3 bg-gray-100 rounded-full hover:bg-blue-100;
+    }
+  }
